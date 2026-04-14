@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandra Åhré – Digital Marketing Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ---- Variables ---- */
+    :root {
+      --navy: #0f172a;
+      --accent: #0891b2;
+      --accent-light: #e0f2fe;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --bg-sidebar: #f8fafc;
+      --bg-page: #f1f5f9;
+    }
+
+    /* ---- Reset ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 15px; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Page wrapper ---- */
+    .page {
+      max-width: 920px;
+      margin: 40px auto;
+      background: #ffffff;
+      box-shadow: 0 8px 48px rgba(15,23,42,0.12);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--navy);
+      color: #fff;
+      padding: 52px 60px 44px;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #38bdf8, transparent);
+    }
+    .header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .header .title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 24px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+    .contact-bar a { color: #94a3b8; text-decoration: none; }
+    .contact-bar a:hover { color: #fff; }
+
+    /* ---- Two-column body ---- */
+    .body {
+      display: grid;
+      grid-template-columns: 1fr 270px;
+    }
+
+    /* ---- Main ---- */
+    .main {
+      padding: 48px 44px 48px 60px;
+      border-right: 1px solid var(--border);
+    }
+
+    /* ---- Sidebar ---- */
+    .sidebar {
+      padding: 48px 28px 48px 28px;
+      background: var(--bg-sidebar);
+    }
+
+    /* ---- Section titles ---- */
+    .section-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+      margin-top: 40px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    /* ---- Summary ---- */
+    .summary p {
+      font-size: 0.92rem;
+      color: #334155;
+      line-height: 1.8;
+    }
+
+    /* ---- Jobs ---- */
+    .job {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 2px;
+    }
+    .job-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .job-period {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .job-company {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .job-company .location {
+      color: var(--text-light);
+      font-weight: 400;
+    }
+    .job ul {
+      padding-left: 0;
+      list-style: none;
+      margin-top: 4px;
+    }
+    .job ul li {
+      font-size: 0.87rem;
+      color: #334155;
+      margin-bottom: 6px;
+      line-height: 1.65;
+      padding-left: 14px;
+      position: relative;
+    }
+    .job ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+      top: 1px;
+    }
+
+    /* ---- Sidebar: Skills ---- */
+    .skill-category { margin-bottom: 22px; }
+    .skill-category h4 {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .skill-list { list-style: none; padding: 0; }
+    .skill-list li {
+      font-size: 0.83rem;
+      color: var(--text);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .skill-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .skill-list li:last-child { border-bottom: none; }
+
+    /* ---- Sidebar: Education ---- */
+    .edu-item {
+      margin-bottom: 18px;
+      padding-left: 10px;
+      border-left: 2px solid var(--border);
+    }
+    .edu-school {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .edu-degree {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+    .edu-year {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
+
+    /* ---- Sidebar: Certs ---- */
+    .cert-item {
+      margin-bottom: 12px;
+      padding: 8px 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .cert-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .cert-issuer {
+      font-size: 0.74rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* ---- Sidebar: Languages ---- */
+    .lang-item {
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-item:last-child { border-bottom: none; }
+    .lang-level {
+      font-size: 0.74rem;
+      color: var(--accent);
+      font-weight: 500;
+      background: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    /* ---- Recommendation ---- */
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin-top: 8px;
+      font-size: 0.87rem;
+      color: #475569;
+      font-style: italic;
+      line-height: 1.75;
+    }
+    .quote-author {
+      font-style: normal;
+      font-size: 0.76rem;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+
+    /* ---- Print ---- */
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; }
+    }
+
+    /* ---- Mobile ---- */
+    @media (max-width: 700px) {
+      .body { grid-template-columns: 1fr; }
+      .main { padding: 32px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .sidebar { padding: 32px 24px; }
+      .header { padding: 36px 24px 28px; }
+      .header h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+<article class="page" itemscope itemtype="https://schema.org/Person">
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <h1 itemprop="name">Alexandra Åhré</h1>
+    <p class="title" itemprop="jobTitle">Digital Marketing Strategist · Employer Branding · Paid Media · B2B</p>
+    <div class="contact-bar">
+      <span>📍 Göteborg, Sverige</span>
+      <span>✉️ <a href="mailto:alexandra.ahre@gmail.com">alexandra.ahre@gmail.com</a></span>
+      <span>📞 0708-668604</span>
+      <span>🔗 <a href="https://www.linkedin.com/in/alexandra-åhré" target="_blank">linkedin.com/in/alexandra-åhré</a></span>
+    </div>
+  </header>
+
+  <!-- ===== BODY ===== -->
+  <div class="body">
+
+    <!-- ===== MAIN ===== -->
+    <main class="main">
+
+      <!-- Summary -->
+      <section class="summary" aria-label="Sammanfattning">
+        <h2 class="section-title">Profil</h2>
+        <p>
+          Digital marknadsföringsstrateg med över 11 års erfarenhet av att bygga och leda datadrivna marknadsföringsfunktioner – från strategi till exekvering. Specialiserad på paid media, employer branding och B2B-marknadsföring med komplexa kundresor. Van att ta strategiansvar, leda team och samarbeta nära kunder och interna stakeholders för att driva mätbara affärsresultat. Söker en roll med strategiskt ansvar inom digital marknadsföring, kommunikation eller utbildning.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section aria-label="Erfarenhet" style="margin-top: 36px;">
+        <h2 class="section-title">Erfarenhet</h2>
+
+        <!-- Oddwork: Head of Digital -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Head of Digital Marketing</span>
+            <span class="job-period">Sep 2022 – nu</span>
+          </div>
+          <div class="job-company">Oddwork &nbsp;<span class="location">· Göteborg</span></div>
+          <ul>
+            <li>Ledde och utvecklade ett team om 3 personer (+ löpande 4 deltidsanställda/praktikanter) – rekryterade, onboardade och coachade mot gemensamma mål.</li>
+            <li>Ansvarade för processutveckling och affärsleverans: etablerade rutiner, mallar och arbetsflöden för att säkra kvalitet, lönsamhet och skalbarhet.</li>
+            <li>Samarbetade tätt med sälj, strategi och content-avdelningar för att förbättra kundleveransen end-to-end.</li>
+            <li>Ingår i Oddworks interna marknadsföringsteam – bidrar med analys, resultatuppföljning, målsättning, konverteringsoptimering och paid media.</li>
+            <li>Hanterat ett 20-tal kunder och hundratals kampanjer – äger hela kampanjprocessen: problemanalys, content- och kanalstrategi, budgetering, kundpresentation, uppsättning, tracking, optimering och rapportering.</li>
+          </ul>
+        </div>
+
+        <!-- Oddwork: Digital Strategist -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Digital Strategist</span>
+            <span class="job-period">Jan 2022 – Sep 2022</span>
+          </div>
+          <div class="job-company">Oddwork &nbsp;<span class="location">· Göteborg</span></div>
+          <ul>
+            <li>Utformade digitala strategier inom employer branding och rekryteringsannonsering.</li>
+            <li>Kombinerade datainsamling med kreativ kanalstrategi för att öka kandidatflöde och varumärkeskännedom.</li>
+          </ul>
+        </div>
+
+        <!-- Vekst -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Marketing Manager &amp; Digital Strategist</span>
+            <span class="job-period">Maj 2021 – Dec 2021</span>
+          </div>
+          <div class="job-company">Vekst &nbsp;<span class="location">· Göteborg</span></div>
+          <ul>
+            <li>Bolagets första dedikerade marknadschef – byggde marknadsfunktionen från grunden med strategier, budgetar och processer.</li>
+            <li>Implementerade MA-system och CRM i HubSpot samt hanterade samtliga kanaler: sociala medier, annonsering, e-post, webb och trycksaker.</li>
+            <li>Upphandlade och ledde externa resurser som frilansare och byråer inom budget.</li>
+          </ul>
+        </div>
+
+        <!-- Brightvision: Senior Inbound -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Senior Inbound Consultant</span>
+            <span class="job-period">Jan 2020 – Maj 2021</span>
+          </div>
+          <div class="job-company">Brightvision AB &nbsp;<span class="location">· Göteborg</span></div>
+          <ul>
+            <li>Planerade, implementerade och analyserade datadrivna B2B-kampanjer för nordiska tech- och mjukvarukunder – inbound marketing, ABM, marketing automation och paid media.</li>
+            <li>Hanterade nyckelkunder som <strong>Microsoft</strong> – skapade och drev lead generation-kampanjer för deras nordiska affär.</li>
+            <li>Certifierad inom Contextual Marketing, Marketing Hub Implementation (HubSpot) och SharpSpring.</li>
+          </ul>
+        </div>
+
+        <!-- Brightvision: Digital Marketing Consultant -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Digital Marketing Consultant</span>
+            <span class="job-period">Maj 2018 – Jan 2020</span>
+          </div>
+          <div class="job-company">Brightvision AB &nbsp;<span class="location">· Göteborg</span></div>
+          <ul>
+            <li>Rådgav och implementerade digitala marknadsföringslösningar för B2B-kunder inom tech – inbound, paid media, marketing automation och content.</li>
+            <li>Utvecklade processer, mallar och rutiner för att effektivisera kampanjleveransen i teamet.</li>
+          </ul>
+        </div>
+
+        <!-- ManpowerGroup / Steen & Strøm -->
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Marknadsförare &amp; Centrumkoordinator</span>
+            <span class="job-period">Feb 2016 – Maj 2018</span>
+          </div>
+          <div class="job-company">ManpowerGroup / Steen &amp; Strøm (Allum) &nbsp;<span class="location">· Göteborg</span></div>
+          <ul>
+            <li>Ansvarade för daglig kommunikation och marknadsföring för Allum köpcentrum – sociala medier, webb och tryckt media.</li>
+            <li>Hanterade kund- och hyresgästrelationer samt stöttade analytiskt och ekonomiskt rapporteringsarbete.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- Recommendation -->
+      <section aria-label="Rekommendation" style="margin-top: 48px;">
+        <h2 class="section-title">Rekommendation</h2>
+        <blockquote class="quote">
+          "Alexandra är otroligt kunnig, analytisk och har förmåga att styra upp vilken stökig situation som helst. Hon axlade snabbt rollen som Head of Digital och byggde framgångsrikt sitt team inom digital marknadsföring för Oddworks kundsegment employer branding."
+        </blockquote>
+        <p class="quote-author">— Julia Sjövall, Head of Marketing @ Gung (tidigare kollega på Oddwork)</p>
+      </section>
+
+    </main>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+
+      <!-- Core Skills -->
+      <section aria-label="Kompetenser">
+        <h2 class="section-title">Kärnkompetenser</h2>
+        <div class="skill-category">
+          <h4>Strategi &amp; Ledarskap</h4>
+          <ul class="skill-list">
+            <li>Digital marknadsföringsstrategi</li>
+            <li>Teamledarskap &amp; coaching</li>
+            <li>Affärsutveckling</li>
+            <li>Kundrelationer &amp; account management</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Kanaler &amp; Plattformar</h4>
+          <ul class="skill-list">
+            <li>Paid media (LinkedIn, Meta, Reddit, YouTube)</li>
+            <li>Programmatisk annonsering</li>
+            <li>Google Ads &amp; Google Analytics</li>
+            <li>LinkedIn Campaign Manager</li>
+            <li>Facebook Business Manager</li>
+            <li>Inbound marketing &amp; ABM</li>
+            <li>E-postmarknadsföring / CRM</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Verktyg &amp; System</h4>
+          <ul class="skill-list">
+            <li>HubSpot (certifierad)</li>
+            <li>SharpSpring (certifierad)</li>
+            <li>Supermetrics</li>
+            <li>Excel / Office-suite</li>
+            <li>AI-verktyg (automatisering av rapportering &amp; kundsamarbete)</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Analys</h4>
+          <ul class="skill-list">
+            <li>Datadriven optimering</li>
+            <li>Kampanjanalys &amp; rapportering</li>
+            <li>A/B-testning</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section aria-label="Utbildning">
+        <h2 class="section-title">Utbildning</h2>
+        <div class="edu-item">
+          <div class="edu-school">Linnéuniversitetet</div>
+          <div class="edu-degree">Fil.Kand – Reklam, Grafisk design &amp; Visuell kommunikation</div>
+          <div class="edu-year">2012 – 2015</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Western Michigan University</div>
+          <div class="edu-degree">Utbytesår – Grafisk design &amp; E-handel</div>
+          <div class="edu-year">2014</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Handelshögskolan, Göteborgs Universitet</div>
+          <div class="edu-degree">Företagsekonomi – Strategi &amp; Marknadsföring</div>
+          <div class="edu-year">2016 – 2017</div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section aria-label="Certifieringar">
+        <h2 class="section-title">Certifieringar</h2>
+        <div class="cert-item">
+          <div class="cert-name">Contextual Marketing</div>
+          <div class="cert-issuer">HubSpot Academy · 2021</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Marketing Hub Implementation</div>
+          <div class="cert-issuer">HubSpot Academy · 2021</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">SharpSpring Certified</div>
+          <div class="cert-issuer">SharpSpring</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Google Analytics Basics</div>
+          <div class="cert-issuer">Google</div>
+        </div>
+      </section>
+
+      <!-- Languages -->
+      <section aria-label="Språk">
+        <h2 class="section-title">Språk</h2>
+        <div class="lang-item">
+          <span>Svenska</span>
+          <span class="lang-level">Modersmål</span>
+        </div>
+        <div class="lang-item">
+          <span>Engelska</span>
+          <span class="lang-level">Professionell nivå</span>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+
+  <!-- ===== CASES ===== -->
+  <section class="cases-section" aria-label="Utvalda case">
+    <h2 class="cases-title">Utvalda Case</h2>
+    <div class="cases-grid">
+
+      <!-- SEB Tech -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">SEB Tech</span>
+          <span class="case-type eb">Employer Branding</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Okänd arbetsgivare inom tech – ingen paid media-närvaro, ingen tydlig identitet.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">EB-koncept "Feet on the ground. Head in the cloud." med kampanjer på LinkedIn, Meta &amp; Reddit samt LinkedIn Live-serien <em>Let's Talk Tech</em>.</span></div>
+        </div><div class="case-result">+79 % fler ansökningar (2022–2024) · ansökningar/tjänst +161 % · 3 500+ kandidatleads · CTR 1,09 % (snitt 0,47 %)</div>
+      </div>
+
+      <!-- LKAB -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">LKAB</span>
+          <span class="case-type eb">Employer Branding</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Attrahera sällsynt specialistkompetens för framtidens gruvteknik – i en avskild del av Sverige.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">Vann upphandlingen med genomarbetad digital strategi. Drev sedan stora awareness-kampanjer och 400+ rekryteringskampanjer.</span></div>
+        </div><div class="case-result">35+ miljoner engagerade i en enskild kampanj</div>
+      </div>
+
+      <!-- Alfa Laval -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">Alfa Laval</span>
+          <span class="case-type eb">Employer Branding</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Global ingenjörsarbetsgivare utan kännedom som arbetsplats – behövde nå ingenjörer över flera marknader.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">Flerspråkig EB-kampanjstrategi lanserad 2025 över flera europeiska marknader.</span></div>
+        </div><div class="case-result">Pågående kampanj · internationell räckvidd</div>
+      </div>
+
+      <!-- Starship Technologies -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">Starship Technologies</span>
+          <span class="case-type eb">Employer Branding</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Snabbväxande tech-bolag som behövde attrahera topptalanger inom IT och mjukvaruutveckling i ett mycket konkurrenstätt segment.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">Digital EB-strategi riktad mot tech-talanger med fokus på bolagets unika innovation och kultur.</span></div>
+        </div><div class="case-result">Ökad synlighet och kandidatflöde mot tech-målgruppen</div>
+      </div>
+
+      <!-- Innofactor -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">Innofactor</span>
+          <span class="case-type b2b">B2B · ABM</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Fylla pipeline med leads från norska kommuner kring Azure-molnlösningar.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">ABM + inbound-strategi med content för hela köpresan, LinkedIn + Meta mot kontolista om 140 kommuner.</span></div>
+        </div><div class="case-result">55 MQLs · 11 möten bokade · 1 630 % ROI</div>
+      </div>
+
+      <!-- Axdata -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">Axdata</span>
+          <span class="case-type b2b">B2B · Integrerad kampanj</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Nå C-level (CFO, CTO, COO) inom tillverkningsindustrin med ERP-erbjudande.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">eBook, tre personaspecifika webinar, email nurturing och paid ads på LinkedIn + Facebook.</span></div>
+        </div><div class="case-result">39 leads · 28 möten (mål 20–27) · 26,47 % konv.grad · översteg samtliga mål</div>
+      </div>
+
+      <!-- Upheads -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <span class="case-client">Upheads</span>
+          <span class="case-type b2b">B2B · Inbound</span>
+        </div>
+        <div class="case-rows"><div class="case-row"><span class="case-label">Utmaning</span><span class="case-text">Generera leads för IT-säkerhetsprodukter mot SMB-segment – nå beslutsfattande CEOs.</span></div>
+        <div class="case-row"><span class="case-label">Lösning</span><span class="case-text">Komplett inbound-kampanj: eBook, 3 videos, landningssidor, 6-stegs email nurturing, SharpSpring, LinkedIn + Facebook.</span></div>
+        </div><div class="case-result">74 leads · 707 annonsklick · 10 % konverteringsgrad · kunden förlängde kampanjen</div>
+      </div>
+
+    </div>
+  </section>
+
+</article>
+
+<style>
+  /* ===== CASES SECTION ===== */
+  .cases-section {
+    padding: 52px 60px 60px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+  .cases-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #0891b2;
+    margin-bottom: 32px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cases-title::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    background: #0891b2;
+    border-radius: 2px;
+  }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .case-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: box-shadow 0.2s;
+    overflow: hidden;
+  }
+  .case-card:hover {
+    box-shadow: 0 6px 24px rgba(8,145,178,0.12);
+    border-color: #bae6fd;
+  }
+  .case-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .case-client {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .case-type {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .case-type.eb  { background: #e0f2fe; color: #0369a1; }
+  .case-type.b2b { background: #dcfce7; color: #15803d; }
+
+  .case-rows { display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 16px; }
+  .case-row { display: flex; gap: 10px; line-height: 1.6; }
+  .case-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    color: #cbd5e1;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 62px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+  .case-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.84rem;
+    color: #475569;
+  }
+  .case-result {
+    background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 100%);
+    color: #7dd3fc;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 6px;
+    line-height: 1.6;
+    border-left: 3px solid #0891b2;
+    margin-top: auto;
+  }
+  @media (max-width: 700px) {
+    .cases-grid { grid-template-columns: 1fr; }
+    .cases-section { padding: 36px 24px 44px; }
+  }
+</style>
+</body>
+</html>
